@@ -66,10 +66,10 @@ Lista con icono de palomita, una por habilidad:
 - **Línea de leches Santa Clara** — Diseño para empaque
 
 ### Ilustración
-- **Mascada Arquitecto** — Ilustración aplicada a textil
-- **Mascada Dragón** — Ilustración aplicada a textil
-- **Hollow Knight (póster)** — Ilustración en versión póster
-- **Panda Sherdi** — Ilustración de personaje
+- **Ilustración para mascada inspirada en el arquitecto Agustín Hernandez Navarro** — Ilustración aplicada a textil
+- **Ilustración para mascada con estética de dragón chino** — Ilustración aplicada a textil
+- **Fan art de Hollow Knight** — Ilustración en versión póster
+- **Panda inspirado en estética de Junji Ito** — Ilustración de personaje
 
 ---
 
