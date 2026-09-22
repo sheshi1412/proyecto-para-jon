@@ -36,6 +36,7 @@ Una lista de tarjetas con acento lateral, en este orden:
 
 - **Estudiante de Diseño Gráfico Digital**
 - **Especialización en Motion Graphics**
+- **Especialización en ilustración** — Digital y tradicional
 
 ---
 
