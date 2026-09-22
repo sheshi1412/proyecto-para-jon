@@ -74,15 +74,17 @@ html[data-theme="dark"] :focus-visible{outline-color:#FF8FA3}
 .wrap{max-width:1120px;margin:0 auto;padding-left:var(--margin);padding-right:var(--margin)}
 section{padding-top:var(--spacing-xl);padding-bottom:var(--spacing-xl);scroll-margin-top:90px}
 /* ===== Header / nav (components.navigation) ===== */
-.site-header{position:sticky;top:0;z-index:1000;background:var(--colors-surface);border-bottom:1px solid var(--colors-border)}
+.site-header{position:sticky;top:0;z-index:1000;background:var(--colors-primary);color:var(--colors-on-primary);border-bottom:1px solid var(--colors-primary-dark)}
+.site-header :focus-visible{outline-color:#FFFFFF}
+.site-header .icon-btn{border-color:#FFFFFF;color:#FFFFFF}
+.site-header .icon-btn:hover{background:rgba(255,255,255,.15)}
 .nav{display:flex;align-items:center;gap:var(--spacing-sm);min-height:64px}
 .brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;margin-right:auto}
 .brand-mark{width:32px;height:32px;object-fit:cover;border-radius:var(--rounded-none)}
 .brand-name{font-family:var(--typography-body);font-size:15px;color:inherit}
 .nav-links{display:none;list-style:none;gap:var(--spacing-sm)}
 .nav-links a{font-family:var(--typography-body);font-size:15px;color:inherit;text-decoration:none;padding:8px}
-.nav-links a:hover{background:rgba(0,0,0,.06);text-decoration:underline}
-html[data-theme="dark"] .nav-links a:hover{background:rgba(255,255,255,.12)}
+.nav-links a:hover{background:rgba(255,255,255,.15);text-decoration:underline}
 /* Botones (components.button-primary) */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
   font-family:var(--typography-body);font-size:20px;font-weight:400;line-height:1;
@@ -103,8 +105,7 @@ html[data-theme="dark"] .btn-secondary:hover{background:rgba(255,255,255,.12);co
 @media(min-width:900px){ .nav-links{display:flex} .nav-toggle{display:none} }
 .mobile-panel{display:none;border-top:1px solid var(--colors-border);padding:8px 0 16px}
 .mobile-panel.open{display:block}
-.mobile-panel a{display:block;padding:12px 4px;font-size:15px;color:inherit;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.08)}
-html[data-theme="dark"] .mobile-panel a{border-color:rgba(255,255,255,.15)}
+.mobile-panel a{display:block;padding:12px 4px;font-size:15px;color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
 .mobile-panel a:hover{text-decoration:underline}
 /* ===== Hero ===== */
 .hero-grid{display:grid;gap:var(--spacing-lg);align-items:center}
