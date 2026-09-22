@@ -70,6 +70,8 @@ Lista con icono de palomita, una por habilidad:
 - **Línea de leches Santa Clara** — Ilustración para packaging
 - **Mascada Arquitecto** — Ilustración aplicada a textil
 - **Mascada Dragón** — Ilustración aplicada a textil
+- **Hollow Knight (póster)** — Ilustración en versión póster
+- **Panda Sherdi** — Ilustración de personaje
 
 ---
 
@@ -97,5 +99,7 @@ Pie de página con fondo oscuro, con los mismos iconos de redes sociales enlazad
 | `línea de leches santa clara.png` | Proyecto: Ilustración packaging |
 | `mascada_arquitecto.png` | Proyecto: Diseño/Ilustración textil |
 | `mascada_dragón.png` | Proyecto: Diseño/Ilustración textil |
+| `Hollow Knight_ilustración_poster version.jpg` | Proyecto: Ilustración póster |
+| `ilustración_panda_sherdi.jpg` | Proyecto: Ilustración personaje |
 
 > **Nota:** No hay fotografía de perfil en assets — se necesitará añadir o usar placeholder.
