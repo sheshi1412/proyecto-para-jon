@@ -63,11 +63,9 @@ Lista con icono de palomita, una por habilidad:
 
 ### Diseño
 - **Rediseño web SUIT** — Rediseño del sitio web para empresa de sistemas de soporte hardware
-- **Mascada Arquitecto** — Diseño de estampado textil
-- **Mascada Dragón** — Diseño de estampado textil
+- **Línea de leches Santa Clara** — Diseño para empaque
 
 ### Ilustración
-- **Línea de leches Santa Clara** — Ilustración para packaging
 - **Mascada Arquitecto** — Ilustración aplicada a textil
 - **Mascada Dragón** — Ilustración aplicada a textil
 - **Hollow Knight (póster)** — Ilustración en versión póster
@@ -96,9 +94,9 @@ Pie de página con fondo oscuro, con los mismos iconos de redes sociales enlazad
 
 | Archivo | Uso sugerido |
 |---------|--------------|
-| `línea de leches santa clara.png` | Proyecto: Ilustración packaging |
-| `mascada_arquitecto.png` | Proyecto: Diseño/Ilustración textil |
-| `mascada_dragón.png` | Proyecto: Diseño/Ilustración textil |
+| `línea de leches santa clara.png` | Proyecto: Diseño empaque |
+| `mascada_arquitecto.png` | Proyecto: Ilustración textil |
+| `mascada_dragón.png` | Proyecto: Ilustración textil |
 | `Hollow Knight_ilustración_poster version.jpg` | Proyecto: Ilustración póster |
 | `ilustración_panda_sherdi.jpg` | Proyecto: Ilustración personaje |
 
