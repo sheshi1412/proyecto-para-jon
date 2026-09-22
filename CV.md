@@ -62,7 +62,7 @@ Lista con icono de palomita, una por habilidad:
 ## 7. Proyectos (Por área)
 
 ### Diseño
-- **Rediseño web SUIT** — Rediseño del sitio web para empresa de sistemas de soporte hardware
+- **Rediseño para empresa SU-IT Software** — Rediseño del sitio web para empresa de sistemas de soporte hardware
 - **Línea de leches Santa Clara** — Diseño para empaque
 
 ### Ilustración
