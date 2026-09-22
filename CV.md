@@ -68,8 +68,8 @@ Lista con icono de palomita, una por habilidad:
 ### Ilustración
 - **Ilustración para mascada inspirada en el arquitecto Agustín Hernandez Navarro** — Ilustración aplicada a textil
 - **Ilustración para mascada con estética de dragón chino** — Ilustración aplicada a textil
-- **Fan art de Hollow Knight** — Ilustración en versión póster
-- **Panda inspirado en estética de Junji Ito** — Ilustración de personaje
+- **Fan art de Hollow Knight** — fan art
+- **Panda inspirado en estética de Junji Ito** — ilustración personal
 
 ---
 
