@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espinosa Bazet Sherdi Sebastian — Sistema de Diseño</title>
+  <style>
+    :root {
+      --color-primary: #C41E3A;
+      --color-primary-dark: #950606;
+      --color-neutral-dark: #000000;
+      --color-neutral-light: #FFFFFF;
+      --color-background: #FFFFFF;
+      --color-surface: #FFFFFF;
+      --color-on-primary: #FFFFFF;
+      --color-on-surface: #000000;
+      --color-border: #000000;
+
+      --font-display: "Georgia", serif;
+      --font-subtitle: "Georgia", serif;
+      --font-body: "Helvetica", "Arial", sans-serif;
+      --font-link: "Times New Roman", serif;
+
+      --rounded-none: 0px;
+      --rounded-subtle: 8px;
+      --rounded-special: 15px;
+
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 32px;
+      --spacing-xl: 48px;
+      --spacing-xxl: 64px;
+      --spacing-margin-mobile: 24px;
+      --spacing-margin-desktop: 64px;
+      --spacing-gutter-mobile: 16px;
+      --spacing-gutter-desktop: 24px;
+
+      --shadow-subtle: 0 2px 4px rgba(0,0,0,0.12);
+      --shadow-medium: 0 4px 12px rgba(0,0,0,0.12);
+      --shadow-high: 0 8px 24px rgba(0,0,0,0.15);
+      --shadow-high-exclusive: 0 8px 24px rgba(0,0,0,0.16);
+    }
+
+    @media (min-width: 1024px) {
+      :root {
+        --spacing-margin: var(--spacing-margin-desktop);
+        --spacing-gutter: var(--spacing-gutter-desktop);
+      }
+    }
+
+    @media (max-width: 1023px) {
+      :root {
+        --spacing-margin: var(--spacing-margin-mobile);
+        --spacing-gutter: var(--spacing-gutter-mobile);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--color-on-surface);
+      background: var(--color-background);
+      padding: var(--spacing-margin);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--color-neutral-dark);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    h1 { font-size: 45px; }
+    h2 { font-size: 32px; }
+    h3 { font-size: 25px; font-family: var(--font-subtitle); }
+    h4 { font-size: 20px; }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    a:hover { color: var(--color-primary-dark); }
+
+    p { margin-bottom: var(--spacing-sm); }
+
+    .section {
+      margin-bottom: var(--spacing-xxl);
+      padding-bottom: var(--spacing-xl);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .color-swatch:hover {
+      box-shadow: var(--shadow-subtle);
+      transform: translateY(-2px);
+    }
+
+    .color-preview {
+      width: 100%;
+      height: 80px;
+      border-radius: var(--rounded-none);
+      margin-bottom: var(--spacing-sm);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .color-swatch.dark .color-preview { border-color: rgba(255,255,255,0.2); }
+
+    .color-name { font-weight: 600; margin-bottom: var(--spacing-xs); }
+    .color-value { font-family: monospace; font-size: 13px; color: #666; }
+    .color-usage { font-size: 13px; margin-top: var(--spacing-xs); color: #444; }
+
+    .typography-sample {
+      padding: var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+    }
+
+    .typography-sample h4 { margin-bottom: var(--spacing-xs); }
+    .typography-sample .sample-text { font-family: inherit; }
+    .typography-sample .sample-meta { font-size: 12px; color: #666; margin-top: var(--spacing-xs); font-family: monospace; }
+
+    .shape-sample {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+      gap: var(--spacing-sm);
+    }
+
+    .shape-box {
+      width: 120px;
+      height: 80px;
+      background: var(--color-neutral-dark);
+      border-radius: var(--radius);
+    }
+
+    .shape-box.light { background: var(--color-neutral-light); border: 1px solid var(--color-border); }
+
+    .component-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .component-card {
+      padding: var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+    }
+
+    .component-card h4 { margin-bottom: var(--spacing-sm); font-size: 18px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: none;
+      border-radius: var(--rounded-none);
+      cursor: pointer;
+      transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+
+    .btn-primary:hover { background: var(--color-primary-dark); box-shadow: var(--shadow-subtle); }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-floating {
+      border-radius: var(--rounded-special);
+      padding: var(--spacing-md) var(--spacing-lg);
+      box-shadow: var(--shadow-high);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-floating::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(149,6,6,0.9);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn-floating:hover::before { opacity: 1; }
+
+    .card {
+      padding: var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover { box-shadow: var(--shadow-subtle); }
+
+    .card h4 { margin-bottom: var(--spacing-xs); }
+
+    .input-field {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 15px;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+      color: var(--color-on-surface);
+    }
+
+    .input-field::placeholder { color: rgba(0,0,0,0.38); }
+
+    .input-field:focus { outline: none; box-shadow: 0 0 0 2px var(--color-primary); }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-md);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+
+    .modal {
+      background: var(--color-surface);
+      border-radius: var(--rounded-subtle);
+      padding: var(--spacing-lg);
+      max-width: 400px;
+      width: 100%;
+      box-shadow: var(--shadow-medium);
+      transform: scale(0.95);
+      transition: transform 0.2s;
+    }
+
+    .modal-overlay.open .modal { transform: scale(1); }
+
+    .modal h4 { margin-bottom: var(--spacing-sm); }
+
+    .toast {
+      background: var(--color-neutral-dark);
+      color: var(--color-neutral-light);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-radius: var(--rounded-subtle);
+      box-shadow: var(--shadow-high-exclusive);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-trigger {
+      background: var(--color-surface);
+      color: var(--color-on-surface);
+      padding: var(--spacing-sm) var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-subtle);
+      font-family: var(--font-body);
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: var(--shadow-high-exclusive);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: var(--spacing-xs);
+      min-width: 200px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-subtle);
+      box-shadow: var(--shadow-high-exclusive);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+      z-index: 100;
+    }
+
+    .dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .dropdown-item {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-on-surface);
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover { background: rgba(0,0,0,0.05); }
+
+    .navigation {
+      display: flex;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--rounded-none);
+      background: var(--color-surface);
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-on-surface);
+      text-decoration: none;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--rounded-none);
+      transition: background 0.2s;
+    }
+
+    .nav-item:hover { background: rgba(0,0,0,0.05); }
+
+    .divider {
+      height: 1px;
+      background: var(--color-border);
+      margin: var(--spacing-md) 0;
+    }
+
+    .link-sample {
+      font-family: var(--font-link);
+      font-size: 10px;
+      line-height: 1;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: var(--spacing-xs);
+      vertical-align: middle;
+    }
+
+    .badge-review { background: #FFF3CD; color: #856404; }
+    .badge-ok { background: #D4EDDA; color: #155724; }
+
+    .code {
+      font-family: monospace;
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: var(--spacing-margin-mobile); }
+      h1 { font-size: 32px; }
+      h2 { font-size: 28px; }
+      .component-showcase { grid-template-columns: 1fr; }
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .interactive-demo {
+      margin-top: var(--spacing-lg);
+      padding: var(--spacing-md);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--rounded-none);
+      background: rgba(0,0,0,0.02);
+    }
+
+    .interactive-demo h4 { margin-bottom: var(--spacing-sm); }
+  </style>
+</head>
+<body>
+  <header class="section" style="border-bottom: 3px solid var(--color-primary); padding-bottom: var(--spacing-lg); margin-bottom: var(--spacing-xl);">
+    <h1>Espinosa Bazet Sherdi Sebastian</h1>
+    <p style="font-size: 18px; color: #666; max-width: 600px;">Sistema de diseño moderno y minimalista con tonalidades carmesíes y negras para transmitir elegancia y sobriedad.</p>
+    <div style="margin-top: var(--spacing-md); display: flex; gap: var(--spacing-sm); flex-wrap: wrap;">
+      <span class="badge badge-ok">Linter: Pasa</span>
+      <span class="badge badge-ok">WCAG AA: 4.5:1</span>
+      <span class="badge badge-review">Olana/Moranga: Revisar licencia</span>
+    </div>
+  </header>
+
+  <nav aria-label="Tabla de contenidos" style="margin-bottom: var(--spacing-xl); padding: var(--spacing-md); background: rgba(0,0,0,0.02); border-radius: var(--rounded-none); border: 1px solid var(--color-border);">
+    <strong style="margin-right: var(--spacing-sm);">Ir a:</strong>
+    <a href="#colors" style="margin-right: var(--spacing-md);">Colores</a>
+    <a href="#typography" style="margin-right: var(--spacing-md);">Tipografía</a>
+    <a href="#shapes" style="margin-right: var(--spacing-md);">Formas</a>
+    <a href="#components" style="margin-right: var(--spacing-md);">Componentes</a>
+    <a href="#elevation" style="margin-right: var(--spacing-md);">Elevación</a>
+    <a href="#spacing" style="margin-right: var(--spacing-md);">Espaciado</a>
+  </nav>
+
+  <section id="colors" class="section" aria-labelledby="colors-title">
+    <h2 id="colors-title">Paleta de Colores</h2>
+    <p>Cuatro tonos base que aseguran contraste óptimo. Tokens semánticos derivados para uso consistente.</p>
+    <div class="token-grid">
+      <div class="color-swatch" style="--swatch-color: var(--color-primary);">
+        <div class="color-preview" style="background: var(--color-primary);"></div>
+        <div class="color-name">Primary <span class="code">colors.primary</span></div>
+        <div class="color-value">#C41E3A</div>
+        <div class="color-usage">Color principal de marca, botones primarios, acentos. Contraste 4.5:1 sobre blanco.</div>
+      </div>
+      <div class="color-swatch dark" style="--swatch-color: var(--color-primary-dark);">
+        <div class="color-preview" style="background: var(--color-primary-dark);"></div>
+        <div class="color-name">Primary Dark <span class="code">colors.primaryDark</span></div>
+        <div class="color-value">#950606</div>
+        <div class="color-usage">Estados hover/active, focus rings, overlay botón flotante (90% opacidad).</div>
+      </div>
+      <div class="color-swatch dark" style="--swatch-color: var(--color-neutral-dark);">
+        <div class="color-preview" style="background: var(--color-neutral-dark);"></div>
+        <div class="color-name">Neutral Dark <span class="code">colors.neutralDark</span></div>
+        <div class="color-value">#000000</div>
+        <div class="color-usage">Texto principal, bordes, fondos oscuros. Contraste 21:1 sobre blanco.</div>
+      </div>
+      <div class="color-swatch" style="--swatch-color: var(--color-neutral-light);">
+        <div class="color-preview" style="background: var(--color-neutral-light); border-color: var(--color-border);"></div>
+        <div class="color-name">Neutral Light <span class="code">colors.neutralLight</span></div>
+        <div class="color-value">#FFFFFF</div>
+        <div class="color-usage">Fondos, superficies, texto sobre oscuro. Garantiza contraste adecuado.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm);">Tokens semánticos derivados</h3>
+    <div class="token-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background: var(--color-background); border-color: var(--color-border);"></div>
+        <div class="color-name">Background <span class="code">colors.background</span></div>
+        <div class="color-value">→ neutralLight</div>
+        <div class="color-usage">Fondo global de la página.</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: var(--color-surface); border-color: var(--color-border);"></div>
+        <div class="color-name">Surface <span class="code">colors.surface</span></div>
+        <div class="color-value">→ neutralLight</div>
+        <div class="color-usage">Superficies de tarjetas, modales, inputs.</div>
+      </div>
+      <div class="color-swatch dark">
+        <div class="color-preview" style="background: var(--color-on-primary);"></div>
+        <div class="color-name">On Primary <span class="code">colors.onPrimary</span></div>
+        <div class="color-value">→ neutralLight</div>
+        <div class="color-usage">Texto/iconos sobre primary.</div>
+      </div>
+      <div class="color-swatch dark">
+        <div class="color-preview" style="background: var(--color-on-surface);"></div>
+        <div class="color-name">On Surface <span class="code">colors.onSurface</span></div>
+        <div class="color-value">→ neutralDark</div>
+        <div class="color-usage">Texto/iconos sobre superficies.</div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: var(--color-border);"></div>
+        <div class="color-name">Border <span class="code">colors.border</span></div>
+        <div class="color-value">→ neutralDark</div>
+        <div class="color-usage">Bordes de inputs, tarjetas, navegación.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="typography" class="section" aria-labelledby="typography-title">
+    <h2 id="typography-title">Tipografía</h2>
+    <p>Cuatro familias tipográficas con jerarquía estricta. <strong>Regla:</strong> Sin opacidad en textos.</p>
+
+    <div class="token-grid">
+      <div class="typography-sample">
+        <h4>Display Large <span class="code">typography.displayLarge</span></h4>
+        <div class="sample-text" style="font-family: var(--font-display); font-size: 45px; line-height: 48px; letter-spacing: 0;">Título principal máximo</div>
+        <div class="sample-meta">45px / 48px / 400 / Olana</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Display Medium <span class="code">typography.displayMedium</span></h4>
+        <div class="sample-text" style="font-family: var(--font-display); font-size: 40px; line-height: 48px; letter-spacing: 0;">Título principal secundario</div>
+        <div class="sample-meta">40px / 48px / 400 / Olana</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Display Mobile <span class="code">typography.displayMobile</span></h4>
+        <div class="sample-text" style="font-family: var(--font-display); font-size: 32px; line-height: 40px; letter-spacing: 0;">Título en móvil</div>
+        <div class="sample-meta">32px / 40px / 400 / Olana</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Subtitle <span class="code">typography.subtitle</span></h4>
+        <div class="sample-text" style="font-family: var(--font-subtitle); font-size: 25px; line-height: 32px; letter-spacing: 0;">Solo para subtítulos</div>
+        <div class="sample-meta">25px / 32px / 400 / Moranga</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Body Large <span class="code">typography.bodyLarge</span></h4>
+        <div class="sample-text" style="font-family: var(--font-body); font-size: 20px; line-height: 28px; letter-spacing: 0;">Etiquetas de botones</div>
+        <div class="sample-meta">20px / 28px / 400 / Helvetica</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Body Medium <span class="code">typography.bodyMedium</span></h4>
+        <div class="sample-text" style="font-family: var(--font-body); font-size: 15px; line-height: 1.6; letter-spacing: 0;">Cuerpo de texto principal. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="sample-meta">15px / 1.0 / 400 / Helvetica</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Body Small <span class="code">typography.bodySmall</span></h4>
+        <div class="sample-text" style="font-family: var(--font-body); font-size: 12px; line-height: 1.6; letter-spacing: 0;">Textos secundarios, metadata, captions.</div>
+        <div class="sample-meta">12px / 1.0 / 400 / Helvetica</div>
+      </div>
+      <div class="typography-sample">
+        <h4>Link <span class="code">typography.link</span></h4>
+        <div class="sample-text link-sample">Enlace con subrayado estándar</div>
+        <div class="sample-meta">10px / 1.0 / 400 / Times New Roman</div>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--spacing-lg); padding: var(--spacing-md); background: rgba(255,243,205,0.5); border: 1px solid #FFE69C; border-radius: var(--rounded-none);">
+      <h4 style="margin-bottom: var(--spacing-xs);">⚠ Reglas de uso obligatorias</h4>
+      <ul style="margin-left: var(--spacing-lg); font-size: 14px;">
+        <li>No aplicar opacidad a ninguna tipografía</li>
+        <li>Moranga <strong>solo</strong> para subtítulos (25px)</li>
+        <li>Olana <strong>solo</strong> para títulos principales (45px/40px/32px)</li>
+        <li>Times New Roman <strong>solo</strong> para enlaces (10px)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="shapes" class="section" aria-labelledby="shapes-title">
+    <h2 id="shapes-title">Formas y Radios</h2>
+    <p>Tres niveles de redondeo. Por defecto: bordes rectos (0px) para estilo limpio y moderno.</p>
+    <div class="token-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+      <div class="shape-sample">
+        <div class="shape-box" style="--radius: var(--rounded-none);"></div>
+        <div class="shape-box light" style="--radius: var(--rounded-none);"></div>
+        <strong>None <span class="code">rounded.none</span></strong>
+        <span class="code">0px</span>
+        <small style="color: #666;">Por defecto — botones, tarjetas, inputs, navegación</small>
+      </div>
+      <div class="shape-sample">
+        <div class="shape-box" style="--radius: var(--rounded-subtle);"></div>
+        <div class="shape-box light" style="--radius: var(--rounded-subtle);"></div>
+        <strong>Subtle <span class="code">rounded.subtle</span></strong>
+        <span class="code">8px</span>
+        <small style="color: #666;">Opcional — modales, popovers, dropdowns, toasts</small>
+      </div>
+      <div class="shape-sample">
+        <div class="shape-box" style="--radius: var(--rounded-special);"></div>
+        <div class="shape-box light" style="--radius: var(--rounded-special);"></div>
+        <strong>Special <span class="code">rounded.special</span></strong>
+        <span class="code">15px</span>
+        <small style="color: #666;">Exclusivo — botón flotante, componentes especiales</small>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--spacing-lg);">
+      <h3>Isotipo / Logo</h3>
+      <p>Funciona como el motivo gráfico principal de la marca. Usar según directrices de marca separadas.</p>
+      <div style="width: 120px; height: 120px; border: 2px dashed var(--color-border); display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; border-radius: var(--rounded-none);">[Logo / Isotipo]</div>
+    </div>
+  </section>
+
+  <section id="components" class="section" aria-labelledby="components-title">
+    <h2 id="components-title">Componentes</h2>
+    <p>Muestra interactiva de todos los componentes definidos en el sistema. Estados: reposo, hover, focus.</p>
+
+    <h3 style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">Botones</h3>
+    <div class="component-showcase">
+      <div class="component-card">
+        <h4>Primario <span class="code">button-primary</span></h4>
+        <button class="btn btn-primary" type="button">Botón Primario</button>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Fondo primary, texto onPrimary, radius none, padding sm md</p>
+      </div>
+      <div class="component-card">
+        <h4>Primario Hover <span class="code">button-primary-hover</span></h4>
+        <button class="btn btn-primary" type="button" style="background: var(--color-primary-dark);">Hover / Active</button>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Fondo primaryDark, mismo texto/radius/padding</p>
+      </div>
+      <div class="component-card">
+        <h4>Flotante <span class="code">button-floating</span></h4>
+        <button class="btn btn-primary btn-floating" type="button">Flotante</button>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Radius special (15px), shadow high, overlay rojo oscuro 90%</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Tarjetas</h3>
+    <div class="component-showcase">
+      <div class="component-card">
+        <h4>Tarjeta base <span class="code">card</span></h4>
+        <div class="card">
+          <h4>Título de la tarjeta</h4>
+          <p style="font-size: 15px; line-height: 1.6;">Contenido de la tarjeta en estado reposo. Sin sombra, fondo surface, borde definido.</p>
+        </div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Flat design — sin sombra en reposo</p>
+      </div>
+      <div class="component-card">
+        <h4>Tarjeta Hover <span class="code">card-hover</span></h4>
+        <div class="card" style="box-shadow: var(--shadow-subtle);">
+          <h4>Título de la tarjeta</h4>
+          <p style="font-size: 15px; line-height: 1.6;">Estado hover con elevación sutil (0 2px 4px rgba(0,0,0,0.12)).</p>
+        </div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Sombra sutil solo en hover/focus</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Campo de Entrada</h3>
+    <div class="component-showcase">
+      <div class="component-card" style="grid-column: 1 / -1; max-width: 400px;">
+        <h4>Input <span class="code">input</span></h4>
+        <label for="demo-input" class="visually-hidden">Campo de ejemplo</label>
+        <input type="text" id="demo-input" class="input-field" placeholder="Placeholder texto...">
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Flat, border 1px, radius none, placeholder rgba(0,0,0,0.38). Focus: ring 2px primary.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Modales y Superposiciones</h3>
+    <div class="component-showcase">
+      <div class="component-card">
+        <h4>Modal <span class="code">modal</span></h4>
+        <button class="btn btn-primary" type="button" onclick="openModal('modal-demo')">Abrir Modal</button>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Radius subtle (8px), padding lg, shadow medium, overlay 50%</p>
+      </div>
+      <div class="component-card">
+        <h4>Popover <span class="code">popover</span></h4>
+        <div style="border: 1px solid var(--color-border); border-radius: var(--rounded-subtle); padding: var(--spacing-md); box-shadow: var(--shadow-medium); background: var(--color-surface);">
+          <strong>Popover</strong>
+          <p style="font-size: 14px; margin-top: var(--spacing-xs);">Contenido flotante con sombra media. Se cierra al click fuera.</p>
+        </div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Radius subtle, padding md, shadow medium</p>
+      </div>
+      <div class="component-card">
+        <h4>Dropdown <span class="code">dropdown</span></h4>
+        <div class="dropdown" id="dropdown-demo">
+          <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">Abrir menú ▼</button>
+          <div class="dropdown-menu" role="listbox">
+            <div class="dropdown-item" role="option">Opción 1</div>
+            <div class="dropdown-item" role="option">Opción 2</div>
+            <div class="dropdown-item" role="option">Opción 3</div>
+          </div>
+        </div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Radius subtle, shadow high-exclusive</p>
+      </div>
+      <div class="component-card">
+        <h4>Toast <span class="code">toast</span></h4>
+        <div class="toast" role="alert" aria-live="polite">
+          <span>Notificación importante</span>
+          <button class="btn" style="background: transparent; color: inherit; padding: 0; font-size: 16px; line-height: 1;" onclick="this.parentElement.remove()">×</button>
+        </div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Fondo neutralDark, texto neutralLight, radius subtle, shadow high-exclusive</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Enlaces y Navegación</h3>
+    <div class="component-showcase">
+      <div class="component-card">
+        <h4>Enlace <span class="code">link</span></h4>
+        <p><a href="#" class="link-sample">Enlace de ejemplo (10px, Times New Roman)</a></p>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Subrayado estándar, hover primaryDark</p>
+      </div>
+      <div class="component-card">
+        <h4>Navegación <span class="code">navigation</span></h4>
+        <nav class="navigation" aria-label="Navegación principal">
+          <a href="#" class="nav-item">Inicio</a>
+          <a href="#" class="nav-item">Productos</a>
+          <a href="#" class="nav-item">Contacto</a>
+        </nav>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Fondo surface, borde 1px, sin sombra, flat</p>
+      </div>
+      <div class="component-card">
+        <h4>Divisor <span class="code">divider</span></h4>
+        <div class="divider"></div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">1px solid border color</p>
+      </div>
+    </div>
+
+    <div class="interactive-demo">
+      <h4>Prueba interactiva: Estados de foco y hover</h4>
+      <p>Navega con <kbd>Tab</kbd> para ver focus rings. Pasa el ratón para ver hover states.</p>
+      <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap; margin-top: var(--spacing-md);">
+        <button class="btn btn-primary" type="button">Botón Primario</button>
+        <button class="btn btn-primary btn-floating" type="button">Flotante</button>
+        <a href="#" class="link-sample" style="align-self: center; padding: var(--spacing-sm) var(--spacing-md);">Enlace</a>
+        <input type="text" class="input-field" style="flex: 1; min-width: 200px;" placeholder="Campo con focus ring">
+      </div>
+    </div>
+  </section>
+
+  <section id="elevation" class="section" aria-labelledby="elevation-title">
+    <h2 id="elevation-title">Elevación y Profundidad</h2>
+    <p>Base plana (flat design) con elevaciones funcionales para jerarquía visual.</p>
+    <div class="token-grid">
+      <div class="component-card">
+        <h4>Base Plana</h4>
+        <div style="width: 100%; height: 80px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--rounded-none); display: flex; align-items: center; justify-content: center; color: #999;">Sin sombra</div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Tarjetas en reposo, inputs, navegación</p>
+      </div>
+      <div class="component-card">
+        <h4>Sutil <span class="code">0 2px 4px rgba(0,0,0,0.12)</span></h4>
+        <div style="width: 100%; height: 80px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--rounded-none); box-shadow: var(--shadow-subtle); display: flex; align-items: center; justify-content: center; color: #999;">Hover tarjetas</div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Hover de tarjetas (card-hover)</p>
+      </div>
+      <div class="component-card">
+        <h4>Media <span class="code">0 4px 12px rgba(0,0,0,0.12)</span></h4>
+        <div style="width: 100%; height: 80px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--rounded-subtle); box-shadow: var(--shadow-medium); display: flex; align-items: center; justify-content: center; color: #999;">Modales, Popovers</div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Tarjetas elevadas, modales, popovers</p>
+      </div>
+      <div class="component-card">
+        <h4>Alta <span class="code">0 8px 24px rgba(0,0,0,0.15)</span></h4>
+        <div style="width: 100%; height: 80px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--rounded-special); box-shadow: var(--shadow-high); display: flex; align-items: center; justify-content: center; color: #999; position: relative; overflow: hidden;">
+          Botón flotante
+          <div style="position: absolute; inset: 0; background: rgba(149,6,6,0.9); opacity: 0.3; pointer-events: none;"></div>
+        </div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Botones flotantes + overlay rojo oscuro 90%</p>
+      </div>
+      <div class="component-card">
+        <h4>Alta Exclusiva <span class="code">0 8px 24px rgba(0,0,0,0.16)</span></h4>
+        <div style="width: 100%; height: 80px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--rounded-subtle); box-shadow: var(--shadow-high-exclusive); display: flex; align-items: center; justify-content: center; color: #999;">Dropdowns, Toasts</div>
+        <p class="sample-meta" style="margin-top: var(--spacing-sm);">Menús principales, modales flotantes, toasts fijos</p>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--spacing-lg); padding: var(--spacing-md); background: rgba(255,243,205,0.5); border: 1px solid #FFE69C; border-radius: var(--rounded-none);">
+      <h4 style="margin-bottom: var(--spacing-xs);">Regla general</h4>
+      <p style="font-size: 14px;">Mantener bordes definidos y evitar capas múltiples de sombras para preservar la estética sobria del sistema.</p>
+    </div>
+  </section>
+
+  <section id="spacing" class="section" aria-labelledby="spacing-title">
+    <h2 id="spacing-title">Espaciado y Layout</h2>
+    <p>Sistema basado en unidad de 8px. Todos los márgenes y paddings son múltiplos de 8px.</p>
+
+    <h3 style="margin: var(--spacing-lg) 0 var(--spacing-md);">Escala de Espaciado</h3>
+    <div class="token-grid">
+      <div class="component-card" style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--color-primary); margin: 0 auto var(--spacing-sm); border-radius: var(--rounded-none);"></div>
+        <strong>xs <span class="code">8px</span></strong>
+      </div>
+      <div class="component-card" style="text-align: center;">
+        <div style="width: 80px; height: 80px; background: var(--color-primary); margin: 0 auto var(--spacing-sm); border-radius: var(--rounded-none);"></div>
+        <strong>sm <span class="code">16px</span></strong>
+      </div>
+      <div class="component-card" style="text-align: center;">
+        <div style="width: 100px; height: 100px; background: var(--color-primary); margin: 0 auto var(--spacing-sm); border-radius: var(--rounded-none);"></div>
+        <strong>md <span class="code">24px</span></strong>
+      </div>
+      <div class="component-card" style="text-align: center;">
+        <div style="width: 120px; height: 120px; background: var(--color-primary); margin: 0 auto var(--spacing-sm); border-radius: var(--rounded-none);"></div>
+        <strong>lg <span class="code">32px</span></strong>
+      </div>
+      <div class="component-card" style="text-align: center;">
+        <div style="width: 140px; height: 140px; background: var(--color-primary); margin: 0 auto var(--spacing-sm); border-radius: var(--rounded-none);"></div>
+        <strong>xl <span class="code">48px</span></strong>
+      </div>
+      <div class="component-card" style="text-align: center;">
+        <div style="width: 160px; height: 160px; background: var(--color-primary); margin: 0 auto var(--spacing-sm); border-radius: var(--rounded-none);"></div>
+        <strong>xxl <span class="code">64px</span></strong>
+      </div>
+    </div>
+
+    <h3 style="margin: var(--spacing-xl) 0 var(--spacing-md);">Márgenes y Gutters Responsivos</h3>
+    <div class="token-grid">
+      <div class="component-card">
+        <h4>Móvil (< 768px)</h4>
+        <p><strong>Margen exterior:</strong> <span class="code">24px</span> (<code>spacing.marginMobile</code>)</p>
+        <p><strong>Gutter:</strong> <span class="code">16px</span> (<code>spacing.gutterMobile</code>)</p>
+        <p><strong>Título principal:</strong> <span class="code">32px</span> (<code>displayMobile</code>)</p>
+      </div>
+      <div class="component-card">
+        <h4>Tablet (768–1023px)</h4>
+        <p>Transición progresiva de márgenes y gutters. Retícula 2–4 columnas.</p>
+      </div>
+      <div class="component-card">
+        <h4>Escritorio (≥ 1024px)</h4>
+        <p><strong>Margen exterior:</strong> <span class="code">64px</span> (<code>spacing.marginDesktop</code>)</p>
+        <p><strong>Gutter:</strong> <span class="code">24px</span> (<code>spacing.gutterDesktop</code>)</p>
+        <p><strong>Título principal:</strong> <span class="code">40px/45px</span> (<code>displayMedium/Large</code>)</p>
+      </div>
+    </div>
+
+    <h3 style="margin: var(--spacing-xl) 0 var(--spacing-md);">Alineación</h3>
+    <p>Texto alineado a la izquierda, <strong>evitando justificación</strong>.</p>
+  </section>
+
+  <footer style="margin-top: var(--spacing-xxl); padding-top: var(--spacing-lg); border-top: 1px solid var(--color-border); text-align: center; color: #666; font-size: 14px;">
+    <p>Sistema de diseño <strong>Espinosa Bazet Sherdi Sebastian</strong> — Generado desde <code>DESIGN.md</code> validado por <a href="https://github.com/google/design.md">@google/design.md</a></p>
+    <p style="margin-top: var(--spacing-xs);">Referencia visual al estilo de <a href="https://getdesign.md/">getdesign.md</a></p>
+  </footer>
+
+  <!-- Modal Demo -->
+  <div class="modal-overlay" id="modal-demo" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h4 id="modal-title">Título del Modal</h4>
+      <p style="margin-bottom: var(--spacing-md);">Este es un modal de ejemplo con radius subtle (8px), padding lg (32px) y sombra media. El overlay de fondo tiene 50% opacidad.</p>
+      <div style="display: flex; gap: var(--spacing-sm); justify-content: flex-end;">
+        <button class="btn btn-primary" type="button" onclick="closeModal('modal-demo')" style="background: transparent; color: var(--color-primary); box-shadow: none; border: 1px solid var(--color-primary);">Cancelar</button>
+        <button class="btn btn-primary" type="button" onclick="closeModal('modal-demo')">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('open');
+        modal.querySelector('button:last-of-type').focus();
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closeModal(overlay.id);
+        }
+      });
+    });
+
+    // Close modal on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+      }
+    });
+
+    // Dropdown logic
+    document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const dropdown = trigger.closest('.dropdown');
+        const isOpen = dropdown.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', isOpen);
+      });
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown.open').forEach(d => {
+          d.classList.remove('open');
+          d.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.focus({ preventScroll: true });
+        }
+      });
+    });
+
+    // Print token values on hover for dev reference
+    document.querySelectorAll('.code').forEach(el => {
+      el.title = 'Token: ' + el.textContent;
+    });
+  </script>
+</body>
+</html>

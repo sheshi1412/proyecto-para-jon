@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CV de Sherdi Sebastian Espinosa Bazet — Diseñador Gráfico Digital e Ilustrador. Ilustración, motion graphics y producción gráfica.">
+<title>Sherdi Bazet — Diseñador Gráfico Digital e Ilustrador</title>
+<style>
+/* ===== Tokens derivados de DESIGN.md ===== */
+@font-face{
+  font-family:"Olana"; font-style:normal; font-weight:400; font-display:swap;
+  src:url("tipografías /Olana-ovWOB.otf") format("opentype");
+}
+@font-face{
+  font-family:"Moranga"; font-style:normal; font-weight:400; font-display:swap;
+  src:url("tipografías /Latinotype - Moranga Regular.otf") format("opentype");
+}
+:root{
+  /* colors */
+  --colors-primary:#C41E3A;
+  --colors-primary-dark:#950606;
+  --colors-neutral-dark:#000000;
+  --colors-neutral-light:#FFFFFF;
+  --colors-background:#FFFFFF;
+  --colors-surface:#FFFFFF;
+  --colors-on-primary:#FFFFFF;
+  --colors-on-surface:#000000;
+  --colors-border:#000000;
+  /* typography families */
+  --typography-display:"Olana",Georgia,serif;
+  --typography-subtitle:"Moranga",Georgia,serif;
+  --typography-body:"Helvetica",Arial,sans-serif;
+  --typography-link:"Times New Roman",serif;
+  /* spacing (base 8px) */
+  --spacing-xs:8px; --spacing-sm:16px; --spacing-md:24px;
+  --spacing-lg:32px; --spacing-xl:48px; --spacing-xxl:64px;
+  --margin:24px; --gutter:16px;
+  /* rounded */
+  --rounded-none:0px; --rounded-subtle:8px; --rounded-special:15px; --rounded-circle:50%;
+  /* shadows (solo hover / superpuestos, base plana en reposo) */
+  --shadow-subtle:0 2px 4px rgba(0,0,0,.12);
+  --shadow-medium:0 4px 12px rgba(0,0,0,.12);
+  --shadow-high:0 8px 24px rgba(0,0,0,.15);
+}
+@media(min-width:1024px){
+  :root{ --margin:64px; --gutter:24px; }
+}
+html[data-theme="dark"]{
+  --colors-background:#000000;
+  --colors-surface:#111111;
+  --colors-on-surface:#FFFFFF;
+  --colors-border:#FFFFFF;
+}
+/* ===== Base ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--typography-body); font-size:15px; line-height:1.6;
+  color:var(--colors-on-surface); background:var(--colors-background);
+  text-align:left;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--colors-primary);text-decoration-thickness:1px;text-underline-offset:2px}
+html[data-theme="dark"] a{color:#FF8FA3}
+a:hover{color:var(--colors-primary-dark)}
+html[data-theme="dark"] a:hover{color:#FFB3C0}
+/* Foco visible (AA) */
+:focus-visible{outline:3px solid var(--colors-primary);outline-offset:3px;border-radius:2px}
+html[data-theme="dark"] :focus-visible{outline-color:#FF8FA3}
+/* Skip link */
+.skip-link{position:absolute;left:8px;top:-60px;background:var(--colors-neutral-dark);color:#fff;padding:8px 16px;z-index:2000;text-decoration:none}
+.skip-link:focus{top:8px;color:#fff}
+/* ===== Layout ===== */
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--margin);padding-right:var(--margin)}
+section{padding-top:var(--spacing-xl);padding-bottom:var(--spacing-xl);scroll-margin-top:90px}
+/* ===== Header / nav (components.navigation) ===== */
+.site-header{position:sticky;top:0;z-index:1000;background:var(--colors-surface);border-bottom:1px solid var(--colors-border)}
+.nav{display:flex;align-items:center;gap:var(--spacing-sm);min-height:64px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;margin-right:auto}
+.brand-mark{width:32px;height:32px;background:var(--colors-primary);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--typography-display);font-size:20px;border-radius:var(--rounded-none)}
+.brand-name{font-family:var(--typography-body);font-size:15px;color:inherit}
+.nav-links{display:none;list-style:none;gap:var(--spacing-sm)}
+.nav-links a{font-family:var(--typography-body);font-size:15px;color:inherit;text-decoration:none;padding:8px}
+.nav-links a:hover{background:rgba(0,0,0,.06);text-decoration:underline}
+html[data-theme="dark"] .nav-links a:hover{background:rgba(255,255,255,.12)}
+/* Botones (components.button-primary) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--typography-body);font-size:20px;font-weight:400;line-height:1;
+  padding:var(--spacing-sm) var(--spacing-md);border:1px solid transparent;border-radius:var(--rounded-none);
+  background:var(--colors-primary);color:var(--colors-on-primary);text-decoration:none;cursor:pointer;
+  min-height:48px}
+.btn:hover{background:var(--colors-primary-dark);color:#fff;box-shadow:var(--shadow-subtle)}
+.btn:active{transform:scale(.98)}
+.btn-secondary{background:transparent;color:var(--colors-on-surface);border-color:var(--colors-border)}
+.btn-secondary:hover{background:rgba(0,0,0,.06);color:var(--colors-on-surface);box-shadow:var(--shadow-subtle)}
+html[data-theme="dark"] .btn-secondary:hover{background:rgba(255,255,255,.12);color:#fff}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;
+  background:transparent;border:1px solid var(--colors-border);border-radius:var(--rounded-none);
+  color:inherit;cursor:pointer;font-size:15px;padding:8px 12px}
+.icon-btn:hover{box-shadow:var(--shadow-subtle)}
+/* Hamburguesa */
+.nav-toggle{display:inline-flex}
+@media(min-width:900px){ .nav-links{display:flex} .nav-toggle{display:none} }
+.mobile-panel{display:none;border-top:1px solid var(--colors-border);padding:8px 0 16px}
+.mobile-panel.open{display:block}
+.mobile-panel a{display:block;padding:12px 4px;font-size:15px;color:inherit;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.08)}
+html[data-theme="dark"] .mobile-panel a{border-color:rgba(255,255,255,.15)}
+.mobile-panel a:hover{text-decoration:underline}
+/* ===== Hero ===== */
+.hero-grid{display:grid;gap:var(--spacing-lg);align-items:center}
+.hero-photo{order:-1;display:flex;justify-content:center}
+.hero-photo img{width:200px;height:200px;object-fit:cover;border-radius:var(--rounded-circle);border:2px solid var(--colors-border);background:#eee}
+.hero-kicker{font-family:var(--typography-subtitle);font-size:25px;line-height:32px;margin-bottom:8px}
+.hero-title{font-family:var(--typography-display);font-size:32px;line-height:40px;margin-bottom:12px}
+.hero-role{display:inline-block;font-family:var(--typography-body);font-size:20px;line-height:28px;background:var(--colors-primary);color:#fff;padding:8px 16px;border-radius:var(--rounded-none);margin-bottom:16px}
+.hero-cta{display:flex;gap:var(--spacing-sm);flex-wrap:wrap;margin:8px 0 16px}
+.social-row{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0}
+.social-row a{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border:1px solid var(--colors-border);border-radius:var(--rounded-none);color:inherit;text-decoration:none;font-size:13px;padding:8px 10px;background:var(--colors-surface)}
+.social-row a:hover{box-shadow:var(--shadow-subtle);text-decoration:underline}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:1fr 320px}
+  .hero-photo{order:0}
+  .hero-photo img{width:280px;height:280px}
+  .hero-title{font-size:45px;line-height:48px}
+}
+/* ===== Secciones ===== */
+.section-title{font-family:var(--typography-display);font-size:32px;line-height:40px;margin-bottom:8px}
+.section-sub{font-family:var(--typography-subtitle);font-size:25px;line-height:32px;margin:24px 0 12px}
+.lead{max-width:65ch}
+.about-card{background:var(--colors-surface);border:1px solid var(--colors-border);border-radius:var(--rounded-none);padding:var(--spacing-md);max-width:70ch}
+.about-card blockquote{font-size:15px}
+.about-card strong{font-weight:700}
+/* Tarjetas educación / experiencia (components.card + acento lateral) */
+.cards{display:grid;gap:var(--spacing-md);margin-top:16px}
+@media(min-width:700px){.cards.cols-2{grid-template-columns:1fr 1fr}}
+.edu-card{background:var(--colors-surface);border:1px solid var(--colors-border);border-left:8px solid var(--colors-primary);border-radius:var(--rounded-none);padding:var(--spacing-md);transition:box-shadow .2s}
+.edu-card:hover{box-shadow:var(--shadow-subtle)}
+.edu-card h3{font-family:var(--typography-body);font-size:20px;line-height:28px;margin-bottom:4px}
+.edu-card p{font-size:15px}
+/* Habilidades */
+.skills{list-style:none;margin-top:16px;display:grid;gap:8px;max-width:70ch}
+.skills li{display:flex;gap:12px;align-items:flex-start;background:var(--colors-surface);border:1px solid var(--colors-border);border-radius:var(--rounded-none);padding:12px 16px;font-size:15px}
+.check{flex:0 0 24px;height:24px;display:inline-flex;align-items:center;justify-content:center;background:var(--colors-primary);color:#fff;border-radius:var(--rounded-none);font-weight:700}
+/* Proyectos */
+.tabs{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap}
+.tab{font-family:var(--typography-body);font-size:15px;padding:12px 20px;min-height:48px;border:1px solid var(--colors-border);background:var(--colors-surface);color:inherit;border-radius:var(--rounded-none);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--colors-primary);color:#fff;border-color:var(--colors-primary)}
+.tab:hover{box-shadow:var(--shadow-subtle)}
+.project-grid{display:grid;gap:var(--spacing-md)}
+@media(min-width:700px){.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.project-grid{grid-template-columns:repeat(3,1fr)}}
+.project{background:var(--colors-surface);border:1px solid var(--colors-border);border-radius:var(--rounded-none);overflow:hidden;transition:box-shadow .2s}
+.project:hover{box-shadow:var(--shadow-subtle)}
+.project img{width:100%;height:220px;object-fit:cover;background:#ddd}
+.project-body{padding:var(--spacing-md)}
+.project-body h3{font-family:var(--typography-body);font-size:20px;line-height:28px;margin-bottom:4px}
+.project-body p{font-size:15px;margin-bottom:8px}
+.tag{display:inline-block;font-size:12px;font-family:var(--typography-body);border:1px solid var(--colors-border);padding:2px 10px;border-radius:var(--rounded-none);margin-right:6px;margin-bottom:4px}
+/* Contacto */
+.contact-grid{display:grid;gap:var(--spacing-sm);margin-top:16px;max-width:640px}
+.contact-btn{display:flex;align-items:center;gap:12px;background:var(--colors-primary);color:#fff;text-decoration:none;
+  font-size:20px;padding:var(--spacing-sm) var(--spacing-md);border-radius:var(--rounded-none);min-height:56px}
+.contact-btn:hover{background:var(--colors-primary-dark);color:#fff;box-shadow:var(--shadow-subtle)}
+.contact-btn .ci{flex:0 0 32px;text-align:center;font-size:20px}
+.contact-btn small{display:block;font-size:12px;opacity:.9;font-family:var(--typography-body)}
+/* Footer oscuro */
+.site-footer{background:var(--colors-neutral-dark);color:#fff;padding:var(--spacing-lg) 0;margin-top:var(--spacing-xl)}
+.site-footer a{color:#fff}
+.site-footer .social-row a{background:transparent;border-color:#fff;color:#fff}
+.site-footer .social-row a:hover{background:var(--colors-primary);border-color:var(--colors-primary)}
+.footer-inner{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+@media(min-width:700px){.footer-inner{flex-direction:row;align-items:center;justify-content:space-between}}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="wrap nav" role="navigation" aria-label="Navegación principal">
+    <a class="brand" href="#inicio" aria-label="Sherdi Bazet — inicio">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span class="brand-name">Sherdi Bazet</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar entre tema claro y oscuro">◐ Tema</button>
+    <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel" aria-label="Abrir menú">☰</button>
+  </div>
+  <div class="wrap">
+    <nav class="mobile-panel" id="mobile-panel" aria-label="Menú móvil">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#educacion">Educación</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <!-- HERO -->
+  <section id="inicio" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-kicker">Portafolio · CV</p>
+        <h1 class="hero-title" id="hero-title">Sherdi Sebastian Espinosa Bazet</h1>
+        <p><span class="hero-role">Diseñador Gráfico Digital e Ilustrador</span></p>
+        <p class="lead">Ilustración, motion graphics y producción gráfica. Ciudad de México.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#proyectos" data-filter-link="diseno">Diseño</a>
+          <a class="btn btn-secondary" href="#proyectos" data-filter-link="ilustracion">Ilustración</a>
+        </div>
+        <ul class="social-row" aria-label="Redes sociales">
+          <li><a href="mailto:sherdieb@gmail.com" aria-label="Enviar correo a sherdieb@gmail.com">✉ Mail</a></li>
+          <li><a href="https://www.instagram.com/sherdi_bazet/" target="_blank" rel="noopener" aria-label="Instagram @Sherdi_Bazet (se abre en pestaña nueva)">◈ IG</a></li>
+          <li><a href="https://www.facebook.com/share/1HHstBWrpz/" target="_blank" rel="noopener" aria-label="Facebook Sherdi Bazet (se abre en pestaña nueva)">ƒ FB</a></li>
+          <li><a href="tel:+525513776855" aria-label="Llamar al 55 1377 6855">✆ Tel</a></li>
+        </ul>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/retrato_sherdi.jpg" alt="Retrato de Sherdi Sebastian Espinosa Bazet" width="280" height="280" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="reveal" aria-labelledby="sobre-mi-title">
+    <h2 class="section-title" id="sobre-mi-title">Sobre mí</h2>
+    <div class="about-card">
+      <blockquote>
+        <p><strong>¡Hola! Soy Sherdi Sebastian Espinosa Bazet.</strong> Nací en la Ciudad de México en 2004 y actualmente resido en la misma ciudad. Desde pequeño me ha apasionado el mundo de la ilustración y el diseño. Mis áreas de especialización son la ilustración, los motion graphics y la producción gráfica.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- EDUCACIÓN -->
+  <section id="educacion" class="reveal" aria-labelledby="educacion-title">
+    <h2 class="section-title" id="educacion-title">Educación</h2>
+    <div class="cards cols-2">
+      <article class="edu-card">
+        <h3>Estudiante de Diseño Gráfico Digital</h3>
+        <p>Formación en diseño, composición y producción gráfica.</p>
+      </article>
+      <article class="edu-card">
+        <h3>Especialización en Motion Graphics</h3>
+        <p>Animación 2D/3D y gráficos en movimiento.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia" class="reveal" aria-labelledby="experiencia-title">
+    <h2 class="section-title" id="experiencia-title">Experiencia</h2>
+    <div class="cards">
+      <article class="edu-card">
+        <h3>Diseñador Gráfico — Proyecto SUIT</h3>
+        <p>Realicé el rediseño del sitio web para la empresa “SUIT”, dedicada al desarrollo de sistemas de soporte para hardware.</p>
+        <p style="margin-top:8px"><span class="tag">Diseño web</span><span class="tag">Rediseño</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades" class="reveal" aria-labelledby="habilidades-title">
+    <h2 class="section-title" id="habilidades-title">Habilidades</h2>
+    <ul class="skills">
+      <li><span class="check" aria-hidden="true">✓</span><span>Ilustración analógica y digital</span></li>
+      <li><span class="check" aria-hidden="true">✓</span><span>Creación de motion graphics y animación 2D/3D</span></li>
+      <li><span class="check" aria-hidden="true">✓</span><span>Diseño aplicado a producción textil / diseño para estampación textil</span></li>
+      <li><span class="check" aria-hidden="true">✓</span><span>Diseño de marca (branding)</span></li>
+      <li><span class="check" aria-hidden="true">✓</span><span>Inglés nivel avanzado</span></li>
+    </ul>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="reveal" aria-labelledby="proyectos-title">
+    <h2 class="section-title" id="proyectos-title">Proyectos</h2>
+    <p class="lead">Filtra por área. Los botones del hero (“Diseño” / “Ilustración”) llevan aquí.</p>
+    <div class="tabs" role="tablist" aria-label="Filtrar proyectos por área">
+      <button class="tab" role="tab" id="tab-todos" aria-selected="true" data-filter="todos" type="button">Todos</button>
+      <button class="tab" role="tab" id="tab-diseno" aria-selected="false" data-filter="diseno" type="button">Diseño</button>
+      <button class="tab" role="tab" id="tab-ilustracion" aria-selected="false" data-filter="ilustracion" type="button">Ilustración</button>
+    </div>
+    <div class="project-grid" id="project-grid">
+      <article class="project" data-area="diseno">
+        <img src="assets/mascada_arquitecto.png" alt="Mascada Arquitecto: diseño de estampado textil con motivos arquitectónicos" loading="lazy" width="800" height="600">
+        <div class="project-body">
+          <h3>Mascada Arquitecto</h3>
+          <p>Diseño de estampado textil.</p>
+          <p><span class="tag">Diseño</span><span class="tag">Textil</span></p>
+        </div>
+      </article>
+      <article class="project" data-area="diseno ilustracion">
+        <img src="assets/mascada_dragón.png" alt="Mascada Dragón: ilustración de dragón aplicada a diseño textil" loading="lazy" width="800" height="600">
+        <div class="project-body">
+          <h3>Mascada Dragón</h3>
+          <p>Ilustración aplicada a textil.</p>
+          <p><span class="tag">Diseño</span><span class="tag">Ilustración</span></p>
+        </div>
+      </article>
+      <article class="project" data-area="ilustracion">
+        <img src="assets/línea de leches santa clara.png" alt="Línea de leches Santa Clara: ilustración para empaque" loading="lazy" width="800" height="600">
+        <div class="project-body">
+          <h3>Línea de leches Santa Clara</h3>
+          <p>Ilustración para empaque.</p>
+          <p><span class="tag">Ilustración</span><span class="tag">Packaging</span></p>
+        </div>
+      </article>
+      <article class="project" data-area="diseno">
+        <div class="project-body">
+          <h3>Rediseño web SUIT</h3>
+          <p>Rediseño del sitio web para empresa de sistemas de soporte para hardware.</p>
+          <p><span class="tag">Diseño web</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="reveal" aria-labelledby="contacto-title">
+    <h2 class="section-title" id="contacto-title">Contacto</h2>
+    <p class="lead">Escríbeme por el medio que prefieras.</p>
+    <div class="contact-grid">
+      <a class="contact-btn" href="mailto:sherdieb@gmail.com">
+        <span class="ci" aria-hidden="true">✉</span>
+        <span>Correo<small>sherdieb@gmail.com</small></span>
+      </a>
+      <a class="contact-btn" href="tel:+525513776855">
+        <span class="ci" aria-hidden="true">✆</span>
+        <span>Teléfono<small>55 1377 6855</small></span>
+      </a>
+      <a class="contact-btn" href="https://www.instagram.com/sherdi_bazet/" target="_blank" rel="noopener">
+        <span class="ci" aria-hidden="true">◈</span>
+        <span>Instagram<small>@Sherdi_Bazet</small></span>
+      </a>
+      <a class="contact-btn" href="https://www.facebook.com/share/1HHstBWrpz/" target="_blank" rel="noopener">
+        <span class="ci" aria-hidden="true">ƒ</span>
+        <span>Facebook<small>Sherdi Bazet</small></span>
+      </a>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year">2026</span> Sherdi Bazet · Ciudad de México</p>
+    <ul class="social-row" aria-label="Redes sociales en pie de página">
+      <li><a href="mailto:sherdieb@gmail.com" aria-label="Correo">✉</a></li>
+      <li><a href="https://www.instagram.com/sherdi_bazet/" target="_blank" rel="noopener" aria-label="Instagram">◈</a></li>
+      <li><a href="https://www.facebook.com/share/1HHstBWrpz/" target="_blank" rel="noopener" aria-label="Facebook">ƒ</a></li>
+      <li><a href="tel:+525513776855" aria-label="Teléfono">✆</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+  /* Tema claro/oscuro */
+  var toggle=document.getElementById("theme-toggle");
+  function setTheme(t){root.setAttribute("data-theme",t);try{localStorage.setItem("sb-theme",t)}catch(e){}
+    toggle.setAttribute("aria-pressed",t==="dark"?"true":"false");}
+  var saved=null;try{saved=localStorage.getItem("sb-theme")}catch(e){}
+  if(saved==="dark"||saved==="light"){setTheme(saved)}
+  toggle.addEventListener("click",function(){setTheme(root.getAttribute("data-theme")==="dark"?"light":"dark")});
+  /* Menú móvil */
+  var navToggle=document.getElementById("nav-toggle"),panel=document.getElementById("mobile-panel");
+  function closePanel(){panel.classList.remove("open");navToggle.setAttribute("aria-expanded","false");navToggle.setAttribute("aria-label","Abrir menú")}
+  navToggle.addEventListener("click",function(){
+    var open=panel.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded",open?"true":"false");
+    navToggle.setAttribute("aria-label",open?"Cerrar menú":"Abrir menú");
+  });
+  panel.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closePanel)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"){closePanel()}});
+  /* Filtro de proyectos */
+  var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  var cards=Array.prototype.slice.call(document.querySelectorAll(".project"));
+  function applyFilter(f){
+    tabs.forEach(function(t){t.setAttribute("aria-selected",t.getAttribute("data-filter")===f?"true":"false")});
+    cards.forEach(function(c){
+      var areas=(c.getAttribute("data-area")||"").split(" ");
+      c.style.display=(f==="todos"||areas.indexOf(f)>-1)?"":"none";
+    });
+  }
+  tabs.forEach(function(t){t.addEventListener("click",function(){applyFilter(t.getAttribute("data-filter"))})});
+  document.querySelectorAll("[data-filter-link]").forEach(function(a){
+    a.addEventListener("click",function(){applyFilter(a.getAttribute("data-filter-link"))});
+  });
+  /* Reveal progresivo */
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("visible");io.unobserve(en.target)}});
+    },{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible")})}
+  /* Año */
+  document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
