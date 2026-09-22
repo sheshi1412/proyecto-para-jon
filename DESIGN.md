@@ -288,6 +288,8 @@ El diseño mantiene una **base plana (flat design)** con elevaciones funcionales
 | `rounded.subtle` | 8px | Opcional para elementos flotantes |
 | `rounded.special` | 15px | Exclusivo para componentes especiales |
 
+**Isotipo / Logo:** `assets/ilustración_sherdi_pp.jpg` — motivo gráfico principal de la marca.
+
 ---
 
 ## Components
