@@ -288,8 +288,6 @@ El diseño mantiene una **base plana (flat design)** con elevaciones funcionales
 | `rounded.subtle` | 8px | Opcional para elementos flotantes |
 | `rounded.special` | 15px | Exclusivo para componentes especiales |
 
-**Isotipo / Logo:** Funciona como el motivo gráfico principal de la marca.
-
 ---
 
 ## Components
